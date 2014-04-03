@@ -33,6 +33,7 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 Plugin 'nvie/vim-flake8'
+Plugin 'pydoc.vim'
 
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
