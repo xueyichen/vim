@@ -18,6 +18,8 @@ set smarttab
 " always uses spaces instead of tab characters
 set expandtab
 
+set textwidth=79
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -30,6 +32,7 @@ call vundle#rc()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
+Plugin 'nvie/vim-flake8'
 
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
