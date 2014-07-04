@@ -32,6 +32,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
+Plugin 'taglist.vim'
 " Plugin 'nvie/vim-flake8'
 " Plugin 'pydoc.vim'
 
