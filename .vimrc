@@ -12,6 +12,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 Plugin 'taglist.vim'
+Plugin 'Lokaltog/powerline'
 
 call vundle#end()
 
@@ -25,6 +26,7 @@ filetype plugin indent on     " required
 " :PluginInstall(!)    - install (update) plugins
 " :PluginSearch(!) foo - search (or refresh cache first) for foo
 " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin commands are not allowed.
@@ -46,17 +48,13 @@ set ruler
 
 " size of a hard tabstop
 set tabstop=4
-
 " size of an "indent"
 set shiftwidth=4
-
 " a combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
 set softtabstop=4
-
 " make "tab" insert indents instead of tabs at the beginning of a line
 set smarttab
-
 " always uses spaces instead of tab characters
 set expandtab
 
@@ -74,3 +72,32 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termcolors=16
 colorscheme solarized
+
+" no backup , no swapfile
+set nobackup
+set noswapfile
+
+" cursor
+set cursorline
+set cursorcolumn
+
+set showmode
+set statusline=%<%f\%h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\%-14.(%l,%c%V%)\ %P
+" Always show the status line - use 2 lines for the status bar
+set laststatus=2
+
+set showmatch
+
+set relativenumber number
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
