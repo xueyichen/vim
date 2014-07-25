@@ -38,6 +38,12 @@ Plugin 'taglist.vim'
 
 call vundle#end()
 filetype plugin indent on     " required
+
+" for ctags
+filetype on
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let Tlist_Auto_Highlight_Tag=1
+nnoremap <silent> <F8> :TlistToggle<CR>
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -50,8 +56,3 @@ filetype plugin indent on     " required
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin commands are not allowed.
 " Put your stuff after this line
-
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
