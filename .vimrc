@@ -67,11 +67,9 @@ map <Down> <Nop>
 
 " Theme
 syntax enable
-set background=dark
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-let g:solarized_termcolors=16
-colorscheme solarized
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 " no backup , no swapfile
 set nobackup
@@ -101,3 +99,16 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
+
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+
+nnoremap <F2> :call HideNumber()<CR>
