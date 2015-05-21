@@ -12,7 +12,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 Plugin 'taglist.vim'
-Plugin 'Lokaltog/powerline'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 
 call vundle#end()
 
@@ -42,7 +46,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 
 
 " vim configuration
-set number
+"set number
 set ruler
 :syntax on
 
@@ -84,6 +88,7 @@ set statusline=%<%f\%h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\"
 " Always show the status line - use 2 lines for the status bar
 set laststatus=2
 
+set encoding=utf8
 set showmatch
 
 set relativenumber number
