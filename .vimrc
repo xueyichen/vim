@@ -1,3 +1,4 @@
+let mapleader=";"
 " vim plugin manager bundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -11,12 +12,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
-Plugin 'taglist.vim'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
+Plugin 'fatih/vim-go'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
@@ -117,3 +118,33 @@ function! HideNumber()
 endfunc
 
 nnoremap <F2> :call HideNumber()<CR>
+
+" Use neocomplete
+let g:neocomplete#enable_at_startup = 1
+
+" auto write
+set autowrite
+
+" keymap for vim-go
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+        call go#cmd#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+        call go#cmd#Build(0)
+    endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+" keymap for NERDTree
+map <leader>d :NERDTree<CR>
